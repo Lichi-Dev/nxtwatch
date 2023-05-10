@@ -166,7 +166,7 @@ class Home extends Component {
                     color={textColor}
                   />
                   <SearchIconContainer
-                    testid="searchButton"
+                    data-testid="searchButton"
                     onClick={this.getSearchResults}
                   >
                     <AiOutlineSearch size={20} />
