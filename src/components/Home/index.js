@@ -130,34 +130,37 @@ class Home extends Component {
 
           const bgColor = isDarkTheme ? '#181818' : '#f9f9f9'
           const textColor = isDarkTheme ? '#f9f9f9' : '#231f20'
-          const display = bannerDisplay === 'flex' ? 'flex' : 'none'
+          const display =
+            bannerDisplay === 'flex' ? (
+              <BannerContainer data-testid="banner">
+                <BannerLeftPart>
+                  <BannerImage
+                    src="https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-light-theme-img.png"
+                    alt="nxt watch logo"
+                  />
+                  <BannerText>
+                    Buy Nxt Watch Premium prepaid plans with <br /> UPI
+                  </BannerText>
+                  <BannerButton type="button">GET IT NOW</BannerButton>
+                </BannerLeftPart>
+                <BannerRightPart>
+                  <BannerCloseButton
+                    data-testid="close"
+                    onClick={this.onCloseBanner}
+                    type="button"
+                  >
+                    <AiOutlineClose size={25} />
+                  </BannerCloseButton>
+                </BannerRightPart>
+              </BannerContainer>
+            ) : null
 
           return (
             <>
               <Header />
               <NavigationBar />
               <HomeContainer data-testid="home" bgColor={bgColor}>
-                <BannerContainer data-testid="banner" display={display}>
-                  <BannerLeftPart>
-                    <BannerImage
-                      src="https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-light-theme-img.png"
-                      alt="nxt watch logo"
-                    />
-                    <BannerText>
-                      Buy Nxt Watch Premium prepaid plans with <br /> UPI
-                    </BannerText>
-                    <BannerButton type="button">GET IT NOW</BannerButton>
-                  </BannerLeftPart>
-                  <BannerRightPart>
-                    <BannerCloseButton
-                      data-testid="close"
-                      onClick={this.onCloseBanner}
-                      type="button"
-                    >
-                      <AiOutlineClose size={25} />
-                    </BannerCloseButton>
-                  </BannerRightPart>
-                </BannerContainer>
+                {display}
                 <SearchContainer>
                   <SearchInput
                     type="search"
